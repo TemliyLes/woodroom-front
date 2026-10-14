@@ -1,20 +1,15 @@
 <template>
   <header class="w-full bg-white">
-    <div
-      class="flex items-center justify-between gap-8 border-b border-[#D9D9D9] py-4"
-    >
+    <div class="flex items-center justify-between gap-8 py-4">
       <div class="flex shrink-0 items-center">
         <div>логотип</div>
       </div>
 
-      <nav>
-        <ul class="flex flex-1 min-w-0 items-center justify-between gap-3 mx-4">
-          <li>Каталог</li>
-          <li>Конфигураторы</li>
-          <li>Решения</li>
-          <li>Бренды</li>
-          <li>Оплата и доставка</li>
-          <li>Контакты</li>
+      <nav class="flex-1 min-w-0">
+        <ul class="flex items-center justify-between gap-3 mx-4">
+          <li v-for="item in menu" :key="item.to">
+            <Item :item="item" />
+          </li>
         </ul>
       </nav>
 
@@ -27,3 +22,15 @@
     </div>
   </header>
 </template>
+
+<script setup>
+import Item from "./Item.vue";
+const menu = [
+  { title: "Каталог", to: "/catalog" },
+  { title: "Конфигураторы", to: "/configurators" },
+  { title: "Решения", to: "/solutions" },
+  { title: "Бренды", to: "/brands" },
+  { title: "Оплата и доставка", to: "/delivery" },
+  { title: "Контакты", to: "/contacts" },
+];
+</script>
