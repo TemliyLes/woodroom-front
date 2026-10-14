@@ -13,18 +13,15 @@
         </ul>
       </nav>
 
-      <div class="flex shrink-0 items-center gap-2">
-        <div>ИКОНКА</div>
-        <div>ИКОНКА</div>
-        <div>ИКОНКА</div>
-        <div>ИКОНКА</div>
-      </div>
+      <Icons />
     </div>
+    <div class="bg-gray h-px w-full"></div>
   </header>
 </template>
 
 <script setup>
 import Item from "./Item.vue";
+import Icons from "./Icons.vue";
 const menu = [
   { title: "Каталог", to: "/catalog" },
   { title: "Конфигураторы", to: "/configurators" },
