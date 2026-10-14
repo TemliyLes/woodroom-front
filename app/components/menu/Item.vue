@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="item.to"
-    class="transition-colors hover:text-primary"
+    class="transition-colors hover:text-accent"
     :class="isActive(item.to) ? 'text-accent font-semibold' : 'text-black'"
     :aria-current="isActive(item.to) ? 'page' : undefined"
   >

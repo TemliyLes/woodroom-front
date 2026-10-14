@@ -2,7 +2,7 @@
   <header class="w-full bg-white">
     <div class="flex items-center justify-between gap-8 py-4">
       <div class="flex shrink-0 items-center">
-        <div>логотип</div>
+        <Logo class="-mt-2" />
       </div>
 
       <nav class="flex-1 min-w-0">
@@ -22,6 +22,7 @@
 <script setup>
 import Item from "./Item.vue";
 import Icons from "./Icons.vue";
+import Logo from "~/assets/icons/Logo.vue";
 const menu = [
   { title: "Каталог", to: "/catalog" },
   { title: "Конфигураторы", to: "/configurators" },
