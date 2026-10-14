@@ -1,3 +1,25 @@
+@font-face {
+  font-family: "Involve";
+  src: url("../fonts/Involve-VF.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Involve";
+  src: url("../fonts/Involve-Oblique-VF.ttf") format("truetype");
+  font-style: oblique;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+html,
+body {
+  font-family: "Involve", Arial, sans-serif;
+  font-weight: 400;
+}
+
 body {
   scrollbar-gutter: stable;
 }

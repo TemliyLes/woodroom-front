@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>WOODROOM</div>
+    <div>WOODROOM - проверка русского ШРИФТА</div>
     <NuxtPage />
     <div>isMobile {{ isMobile }}</div>
     <div>isTablet {{ isTablet }}</div>
