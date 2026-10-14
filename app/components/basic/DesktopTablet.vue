@@ -1,7 +1,7 @@
 <template>
   <component
-    :is="isTablet || isMobile ? props.mobile : props.desktop"
-    v-bind="isTablet || isMobile ? props.mobileProps : props.desktopProps"
+    :is="isTablet || isMobile ? props.tablet : props.desktop"
+    v-bind="isTablet || isMobile ? props.tabletProps : props.desktopProps"
   />
 </template>
 
