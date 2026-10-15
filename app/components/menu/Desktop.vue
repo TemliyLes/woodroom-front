@@ -2,7 +2,7 @@
   <header class="w-full bg-white">
     <div class="flex items-center justify-between gap-8 py-4">
       <div class="flex shrink-0 items-center">
-        <Logo class="-mt-2" />
+        <NuxtLink to="/"><Logo class="-mt-2" /></NuxtLink>
       </div>
 
       <nav class="flex-1 min-w-0">
