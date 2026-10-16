@@ -5,6 +5,7 @@
 
       <div class="flex-1 min-w-[768px]"><Slider /></div>
     </Flex>
+    <HeroGroup />
     <div class="w-12">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam porro
       ex a iste, quisquam vitae, fuga minima illum nemo aliquam in
@@ -45,4 +46,5 @@
 import Container from "~/components/basic/Container.vue";
 import Slider from "~/components/slider/index.vue";
 import Flex from "~/components/basic/Flex.vue";
+import HeroGroup from "~/components/configurator/HeroGroup.vue";
 </script>

@@ -1,11 +1,12 @@
 <template>
   <div class="relative w-full">
-    <header class="max-w-full relative">
-      <Menu :width="CONTAINER_WIDTH" :height="HEADER_HEIGHT" />
+    <header class="fixed top-0 z-80 bg-white w-full grid place-items-center">
+      <Menu class="m-auto" :width="CONTAINER_WIDTH" :height="HEADER_HEIGHT" />
     </header>
     <div id="smooth-wrapper" :style="{ paddingTop: HEADER_HEIGHT }">
       <div id="smooth-content">
         <NuxtPage />
+
         <Container>
           <div>WOODROOM - проверка русского ШРИФТА</div>
           <div>isMobile {{ isMobile }}</div>
