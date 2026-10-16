@@ -4,7 +4,7 @@
     class="group flex min-h-[84px] transition transition-all duration-500 w-full items-center justify-between gap-4 rounded-[10px] px-4 py-3 transition-colors duration-300"
     :class="
       accent
-        ? 'bg-accent text-black hover:bg-haccent'
+        ? 'bg-haccent text-black hover:bg-accent'
         : 'bg-dark text-white hover:bg-black'
     "
   >
