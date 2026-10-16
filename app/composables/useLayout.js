@@ -1,6 +1,8 @@
 import { computed } from "vue";
 
 export const useLayout = () => {
+  const HEADER_HEIGHT = "88px";
+  const CONTAINER_WIDTH = "1200px";
   const width = useState("layout-width", () => 0);
   const height = useState("layout-height", () => 0);
   const ready = useState("layout-ready", () => false);
@@ -20,5 +22,7 @@ export const useLayout = () => {
     isMobile,
     isTablet,
     isDesktop,
+    HEADER_HEIGHT,
+    CONTAINER_WIDTH,
   };
 };

@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full bg-white">
+  <header class="w-full bg-white fixed z-80" :style="{ width: width }">
     <div class="flex items-center justify-between gap-8 py-4">
       <div class="flex shrink-0 items-center">
         <NuxtLink to="/"><Logo class="-mt-2" /></NuxtLink>
@@ -23,6 +23,14 @@
 import Item from "./Item.vue";
 import Icons from "./Icons.vue";
 import Logo from "~/assets/icons/Logo.vue";
+defineProps({
+  height: {
+    type: String,
+  },
+  width: {
+    type: String,
+  },
+});
 const menu = [
   { title: "Каталог", to: "/catalog" },
   { title: "Конфигураторы", to: "/configurators" },
