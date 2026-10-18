@@ -28,6 +28,14 @@
       <Solutions />
     </Block>
   </Screen>
+  <Container>
+    <Block title="Бренды">
+      <template #bar>
+        <Button variant="black-outline">Все бренды</Button>
+      </template>
+      <Brands />
+    </Block>
+  </Container>
   <div class="h-[2000px]"></div>
 </template>
 
@@ -43,4 +51,5 @@ import Button from "~/components/ui/Button.vue";
 import Categorys from "~/components/cardsGrids/grids/Categorys.vue";
 import Screen from "~/components/basic/Screen.vue";
 import Solutions from "~/components/cardsGrids/grids/Solutions.vue";
+import Brands from "~/components/brands/Wrapper.vue";
 </script>
