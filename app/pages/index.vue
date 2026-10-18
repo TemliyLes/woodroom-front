@@ -9,6 +9,12 @@
     <Block title="Один продукт — разные задачи">
       <Task />
     </Block>
+    <Block title="Материалы и системы для мебельных решений">
+      <template #bar>
+        <Button variant="black-outline">Перейти в каталог</Button>
+      </template>
+      <Category />
+    </Block>
   </Container>
   <div class="h-[2000px]"></div>
 </template>
@@ -21,4 +27,6 @@ import HeroGroup from "~/components/configurator/HeroGroup.vue";
 import Harmonic from "~/components/harmonic/index.vue";
 import Block from "~/components/basic/Block.vue";
 import Task from "~/components/cardsGrids/grids/Task.vue";
+import Button from "~/components/ui/Button.vue";
+import Category from "~/components/cardsGrids/grids/Category.vue";
 </script>

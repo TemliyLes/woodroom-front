@@ -1,7 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  modules: ["@pinia/nuxt", "v-gsap-nuxt"],
+  modules: ["@pinia/nuxt", "v-gsap-nuxt", "@nuxt/image"],
 
   css: ["~/assets/css/main.css"],
 

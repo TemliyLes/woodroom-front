@@ -5,7 +5,10 @@
         <Header level="h2">{{ title }}</Header>
       </div>
 
-      <div v-if="slots.bar" class="w-1/2">
+      <div
+        v-if="slots.bar"
+        class="flex min-w-0 flex-1 items-center justify-end"
+      >
         <slot name="bar" />
       </div>
     </div>
