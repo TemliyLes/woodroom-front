@@ -42,7 +42,9 @@
       <Products />
     </Block>
   </Container>
-  <div class="h-[2000px]"></div>
+  <Screen>
+    <Professional />
+  </Screen>
 </template>
 
 <script setup>
@@ -59,4 +61,5 @@ import Screen from "~/components/basic/Screen.vue";
 import Solutions from "~/components/cardsGrids/grids/Solutions.vue";
 import Brands from "~/components/brands/Wrapper.vue";
 import Products from "~/components/cardsGrids/grids/Products.vue";
+import Professional from "~/components/banner/Professional.vue";
 </script>
