@@ -35,6 +35,12 @@
       </template>
       <Brands />
     </Block>
+    <Block title="Востребованные товары" class="!mt-36">
+      <template #bar>
+        <Button variant="black-outline">Весь каталог</Button>
+      </template>
+      <Products />
+    </Block>
   </Container>
   <div class="h-[2000px]"></div>
 </template>
@@ -52,4 +58,5 @@ import Categorys from "~/components/cardsGrids/grids/Categorys.vue";
 import Screen from "~/components/basic/Screen.vue";
 import Solutions from "~/components/cardsGrids/grids/Solutions.vue";
 import Brands from "~/components/brands/Wrapper.vue";
+import Products from "~/components/cardsGrids/grids/Products.vue";
 </script>
