@@ -2,6 +2,7 @@
   <button
     :type="type"
     :disabled="disabled"
+    @click="$emit('click', $event)"
     :class="[
       'inline-flex items-center justify-center gap-2',
       'rounded-xl border px-6 py-3',
@@ -35,7 +36,7 @@ defineProps({
     default: "button",
   },
 });
-
+defineEmits(["click"]);
 const variants = {
   "white-outline": [
     "border-white bg-transparent text-white",

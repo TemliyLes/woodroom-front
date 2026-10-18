@@ -1,5 +1,6 @@
 <template>
   <div class="relative w-full">
+    <div id="teleports"></div>
     <header class="fixed top-0 z-80 grid w-full place-items-center bg-white">
       <Menu class="m-auto" :width="CONTAINER_WIDTH" :height="HEADER_HEIGHT" />
     </header>
