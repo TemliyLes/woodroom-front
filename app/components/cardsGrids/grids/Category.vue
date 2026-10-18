@@ -3,17 +3,12 @@
     :items="categories"
     :mobile="2"
     :tablet="3"
-    :desktop="5"
-    :max="10"
+    :desktop="4"
+    :max="8"
     :gap="4"
   >
     <template #default="{ item }">
-      <CategoryCard
-        :title="item.title"
-        :image="item.image"
-        :to="item.to"
-        :variant="item.variant"
-      />
+      <CategoryCard v-bind="item" />
     </template>
   </Grid>
 </template>
@@ -26,16 +21,42 @@ const categories = [
   {
     id: 1,
     title: "Профили и системы для шкафов",
-    image: "/images/categories/profiles.png",
-    to: "/catalog/profiles",
-    variant: "white",
+    to: "/catalog/profili-i-sistemy-dlya-shkafov",
   },
   {
     id: 2,
-    title: "Мебельная фурнитура",
-    image: "/images/categories/furniture.png",
-    to: "/catalog/furniture",
-    variant: "beige",
+    title: "Кухонные профили",
+    to: "/catalog/kuhonnye-profili",
+  },
+  {
+    id: 3,
+    title: "Фасадные профили",
+    to: "/catalog/fasadnye-profili",
+  },
+  {
+    id: 4,
+    title: "Гардеробная система",
+    to: "/catalog/garderobnaya-sistema",
+  },
+  {
+    id: 5,
+    title: "Открытые интерьерные системы",
+    to: "/catalog/otkrytye-interernye-sistemy",
+  },
+  {
+    id: 6,
+    title: "Системы межкомнатных перегородок",
+    to: "/catalog/sistemy-mezhkomnatnyh-peregorodok",
+  },
+  {
+    id: 7,
+    title: "Мебельные ручки",
+    to: "/catalog/mebelnye-ruchki",
+  },
+  {
+    id: 8,
+    title: "Профили для светодиодной подсветки",
+    to: "/catalog/profili-dlya-svetodiodnoy-podsvetki",
   },
 ];
 </script>

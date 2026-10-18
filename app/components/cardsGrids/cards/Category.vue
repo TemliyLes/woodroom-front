@@ -1,15 +1,15 @@
 <template>
   <NuxtLink
     :to="to"
-    class="group flex h-full min-h-[380px] flex-col overflow-hidden rounded-2xl p-5 text-main transition-colors duration-300"
-    :class="variant === 'beige' ? 'bg-beige' : 'bg-white'"
+    class="mt-6 shadow-sm transition-all duration-500 group flex h-full min-h-[320px] flex-col overflow-hidden rounded-2xl bg-milk p-5 text-main transition-colors duration-300 hover:bg-beige"
   >
-    <div class="flex flex-1 items-center justify-center">
-      <NuxtImg
-        :src="image"
-        :alt="title"
-        class="aspect-square w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+    <div class="flex shrink-0 items-center justify-center">
+      <img
+        :src="imageSrc"
+        :alt="hasImage ? title : ''"
+        class="h-full w-full object-contain"
         loading="lazy"
+        @error="onImageError"
       />
     </div>
 
@@ -35,24 +35,42 @@
 </template>
 
 <script setup>
-import { NuxtImg } from "#components";
-defineProps({
+import { computed, ref, watch } from "vue";
+
+const props = defineProps({
   title: {
     type: String,
     required: true,
   },
   image: {
     type: String,
-    required: true,
+    default: "",
   },
   to: {
     type: String,
     required: true,
   },
-  variant: {
-    type: String,
-    default: "white",
-    validator: (value) => ["white", "beige"].includes(value),
-  },
 });
+
+const placeholder = "/imgs/no-img.png";
+const imageError = ref(false);
+
+const hasImage = computed(
+  () => Boolean(props.image?.trim()) && !imageError.value,
+);
+
+const imageSrc = computed(() => (hasImage.value ? props.image : placeholder));
+
+watch(
+  () => props.image,
+  () => {
+    imageError.value = false;
+  },
+);
+
+const onImageError = () => {
+  if (hasImage.value) {
+    imageError.value = true;
+  }
+};
 </script>
