@@ -6,10 +6,10 @@
   >
     <div class="aspect-[4/3] w-full overflow-hidden rounded-xl bg-beige">
       <img
-        :src="image || placeholder"
+        src="https://images.unsplash.com/photo-1757524625335-0b7f62089dd2?w=900&auto=format&fit=crop&q=80"
         :alt="title"
-        class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        loading="lazy"
+        class="block h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+        loading="eager"
         decoding="async"
         @error="onImageError"
       />
@@ -28,10 +28,11 @@
 </template>
 
 <script setup>
+import { computed, ref, watch } from "vue";
 import { NuxtLink } from "#components";
 import Header from "~/components/typography/Header.vue";
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     default: "Гардеробная в нише",
@@ -50,14 +51,22 @@ defineProps({
   },
 });
 
-const placeholder =
-  "https://images.unsplash.com/photo-1757524625335-0b7f62089dd2?w=900&auto=format&fit=crop&q=80";
+const imageError = ref(false);
 
-const onImageError = (event) => {
-  const img = event.currentTarget;
+const imageSrc = computed(() => {
+  return imageError.value || !props.image ? placeholder : props.image;
+});
 
-  if (img.src !== placeholder) {
-    img.src = placeholder;
+watch(
+  () => props.image,
+  () => {
+    imageError.value = false;
+  },
+);
+
+const onImageError = () => {
+  if (imageSrc.value !== placeholder) {
+    imageError.value = true;
   }
 };
 </script>

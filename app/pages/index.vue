@@ -15,7 +15,7 @@
       <Categorys />
     </Block>
   </Container>
-  <Screen class="mt-16">
+  <Screen animated class="mt-16">
     <Block
       collapsed
       black
