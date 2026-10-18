@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative w-full overflow-hidden"
+    :class="classes.section"
     aria-label="Главный баннер"
     @mouseenter="pause"
     @mouseleave="resume"
@@ -9,16 +9,14 @@
     @touchstart.passive="onTouchStart"
     @touchend.passive="onTouchEnd"
   >
-    <div class="relative h-[420px] md:h-[444px] rounded-xl overflow-hidden">
+    <div :class="classes.slider">
       <div
         v-for="(slide, index) in items"
         :key="slide.id ?? index"
-        class="absolute inset-0 transition-opacity duration-700 ease-in-out"
-        :class="
-          index === activeIndex
-            ? 'z-10 opacity-100'
-            : 'pointer-events-none z-0 opacity-0'
-        "
+        :class="[
+          classes.slide,
+          index === activeIndex ? classes.slideActive : classes.slideInactive,
+        ]"
         :aria-hidden="index !== activeIndex"
         :inert="index !== activeIndex"
       >
@@ -26,47 +24,38 @@
           :src="slide.image"
           :alt="slide.alt || ''"
           :loading="index === 0 ? 'eager' : 'lazy'"
-          class="absolute inset-0 h-full w-full object-cover"
+          :class="classes.image"
         />
 
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"
-        />
+        <div :class="classes.gradient" />
 
-        <div
-          class="relative z-10 mx-auto flex h-full max-w-7xl items-center px-12 md:px-24"
-        >
-          <div class="max-w-2xl text-white">
-            <Header class="mb-2">
+        <div :class="classes.content">
+          <div :class="classes.textBlock">
+            <Header :class="classes.title">
               {{ slide.title }}
             </Header>
 
-            <p
-              v-if="slide.description"
-              class="max-w-xl text-base leading-relaxed text-white/85 md:text-xl"
-            >
+            <Paragraph v-if="slide.description" class="mt-4">
               {{ slide.description }}
-            </p>
+            </Paragraph>
 
-            <NuxtLink v-if="slide.link" :to="slide.link" class="mt-8">
-              <div class="flex flex-wrap gap-5 mt-8">
-                <Button
-                  variant="white"
-                  class="min-h-15 px-10"
-                  @click="navigateTo('/catalog')"
-                >
-                  Перейти в каталог
-                </Button>
+            <div v-if="slide.link" :class="classes.actions">
+              <Button
+                variant="white"
+                :class="classes.primaryButton"
+                @click="navigateTo('/catalog')"
+              >
+                Перейти в каталог
+              </Button>
 
-                <Button
-                  variant="white-outline"
-                  class="min-h-15 px-10"
-                  @click="openCalculation"
-                >
-                  Начать расчет
-                </Button>
-              </div>
-            </NuxtLink>
+              <Button
+                variant="white-outline"
+                :class="classes.secondaryButton"
+                @click="openCalculation"
+              >
+                Начать расчет
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -75,26 +64,26 @@
     <template v-if="items.length > 1 && navigation">
       <button
         type="button"
-        class="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition hover:bg-white/30 md:left-6"
+        :class="[classes.arrow, classes.arrowPrev]"
         aria-label="Предыдущий слайд"
         @click="prev"
       >
-        <span aria-hidden="true" class="text-2xl">‹</span>
+        <Chevron class="w-2 rotate-180" />
       </button>
 
       <button
         type="button"
-        class="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition hover:bg-white/30 md:right-6"
+        :class="[classes.arrow, classes.arrowNext]"
         aria-label="Следующий слайд"
         @click="next"
       >
-        <span aria-hidden="true" class="text-2xl">›</span>
+        <Chevron class="w-2 translate-x-0.5" />
       </button>
     </template>
 
     <div
       v-if="pagination && items.length > 1"
-      class="absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 gap-2"
+      :class="classes.pagination"
       aria-label="Навигация по слайдам"
     >
       <button
@@ -103,12 +92,12 @@
         type="button"
         :aria-label="`Перейти к слайду ${index + 1}`"
         :aria-current="activeIndex === index ? 'true' : undefined"
-        class="h-2 rounded-full transition-all duration-300"
-        :class="
+        :class="[
+          classes.paginationDot,
           activeIndex === index
-            ? 'w-8 bg-white'
-            : 'w-2 bg-white/40 hover:bg-white/70'
-        "
+            ? classes.paginationActive
+            : classes.paginationInactive,
+        ]"
         @click="goTo(index)"
       />
     </div>
@@ -119,6 +108,51 @@
 import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import Header from "../typography/Header.vue";
 import Button from "../ui/Button.vue";
+import Chevron from "./Chevron.vue";
+import Paragraph from "../typography/Paragraph.vue";
+
+const classes = {
+  section: "relative w-full overflow-hidden",
+
+  slider: "relative h-[420px] overflow-hidden rounded-xl md:h-[444px]",
+
+  slide: "absolute inset-0 transition-opacity duration-700 ease-in-out",
+  slideActive: "z-10 opacity-100",
+  slideInactive: "pointer-events-none z-0 opacity-0",
+
+  image: "absolute inset-0 h-full w-full object-cover",
+
+  gradient:
+    "absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent",
+
+  content:
+    "relative z-10 mx-auto flex h-full max-w-7xl items-center px-12 md:px-24",
+
+  textBlock: "max-w-2xl text-white",
+  title: "mb-2",
+
+  description: "max-w-xl text-base leading-relaxed text-white/85 md:text-xl",
+
+  actions: "mt-8 flex flex-wrap gap-5",
+
+  button: "min-h-15 px-10",
+  primaryButton: "min-h-15 px-10",
+  secondaryButton: "min-h-15 px-10",
+
+  arrow:
+    "absolute top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition hover:bg-white/30",
+
+  arrowPrev: "left-3 md:left-6",
+  arrowNext: "right-3 md:right-6",
+
+  pagination: "absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 gap-2",
+
+  paginationDot: "h-2 cursor-pointer rounded-full transition-all duration-300",
+
+  paginationActive: "w-8 bg-white",
+  paginationInactive: "w-2 bg-white/40 hover:bg-white/70",
+};
+
 const props = defineProps({
   slides: {
     type: Array,
@@ -242,6 +276,7 @@ watch(
     if (activeIndex.value >= items.value.length) {
       activeIndex.value = 0;
     }
+
     startAutoplay();
   },
 );
