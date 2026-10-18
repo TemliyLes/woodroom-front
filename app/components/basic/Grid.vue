@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid"
+    class="grid pb-12"
     :class="[
       mobileClasses[mobile],
       tabletClasses[tablet],

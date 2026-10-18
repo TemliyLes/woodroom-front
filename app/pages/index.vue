@@ -1,21 +1,33 @@
 <template>
-  <Container>
-    <Flex :gap="4" align="stretch" class="mt-4">
+  <Container class="mt-4">
+    <Flex :gap="4" align="stretch">
       <div class="flex-1 min-w-0"><Harmonic /></div>
-
       <div class="flex-1 min-w-[768px]"><Slider /></div>
     </Flex>
     <HeroGroup />
     <Block title="Один продукт — разные задачи">
-      <Task />
+      <Tasks />
     </Block>
     <Block title="Материалы и системы для мебельных решений">
       <template #bar>
         <Button variant="black-outline">Перейти в каталог</Button>
       </template>
-      <Category />
+      <Categorys />
     </Block>
   </Container>
+  <Screen class="mt-16">
+    <Block
+      collapsed
+      black
+      description="Примеры использования мебельных систем и материалов. Сохраняйте подходящие идеи, изучайте состав и находите специалистов."
+      title="Реализованные решения"
+    >
+      <template #bar>
+        <Button variant="white-outline">Перейти в каталог</Button>
+      </template>
+      <Solutions />
+    </Block>
+  </Screen>
   <div class="h-[2000px]"></div>
 </template>
 
@@ -26,7 +38,9 @@ import Flex from "~/components/basic/Flex.vue";
 import HeroGroup from "~/components/configurator/HeroGroup.vue";
 import Harmonic from "~/components/harmonic/index.vue";
 import Block from "~/components/basic/Block.vue";
-import Task from "~/components/cardsGrids/grids/Task.vue";
+import Tasks from "~/components/cardsGrids/grids/Tasks.vue";
 import Button from "~/components/ui/Button.vue";
-import Category from "~/components/cardsGrids/grids/Category.vue";
+import Categorys from "~/components/cardsGrids/grids/Categorys.vue";
+import Screen from "~/components/basic/Screen.vue";
+import Solutions from "~/components/cardsGrids/grids/Solutions.vue";
 </script>

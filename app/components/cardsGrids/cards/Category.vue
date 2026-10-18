@@ -14,9 +14,9 @@
     </div>
 
     <div class="mt-auto flex items-end justify-between gap-4">
-      <p class="max-w-[80%] text-[16px] font-semibold leading-[1.2]">
+      <Header level="h5">
         {{ title }}
-      </p>
+      </Header>
 
       <svg
         class="h-7 w-7 shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1"
@@ -36,6 +36,7 @@
 
 <script setup>
 import { computed, ref, watch } from "vue";
+import Header from "~/components/typography/Header.vue";
 
 const props = defineProps({
   title: {
