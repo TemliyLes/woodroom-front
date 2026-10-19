@@ -1,6 +1,7 @@
 <template>
   <div class="relative w-full">
     <div id="teleports"></div>
+
     <header class="fixed top-0 z-80 grid w-full place-items-center bg-white">
       <Menu class="m-auto" :width="CONTAINER_WIDTH" :height="HEADER_HEIGHT" />
     </header>
@@ -8,11 +9,18 @@
     <div ref="smoothWrapper" :style="{ paddingTop: HEADER_HEIGHT }">
       <div ref="smoothContent">
         <div ref="pageMotion">
-          <NuxtPage />
+          <NuxtPage :transition="false" />
           <Footer />
         </div>
       </div>
     </div>
+
+    <div
+      id="route-overlay"
+      class="pointer-events-none fixed inset-0 z-[9999] bg-black"
+      style="visibility: hidden"
+      aria-hidden="true"
+    />
 
     <ClientOnly>
       <PageLoader @reveal="revealSite" />
